@@ -10,7 +10,7 @@ namespace Webapi.Test
         {
             var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
             var result = controller.Get();
-            Assert.IsType<OkObjectResult>(result); 
+            Assert.IsType<OkObjectResult>(result);
         }
         [Fact]
         public void GetTodoListById_ShouldReturnNotFound()
@@ -59,6 +59,21 @@ namespace Webapi.Test
             };
             var result = controller.Post(dto);
             Assert.IsType<BadRequestObjectResult>(result);
+        }
+        [Fact]
+        public void CreateTodoList_ShouldReturnCreatedAtActionResult_WhenValidInput()
+        {
+            var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
+            var dto = new todolist.Server.Dto.TodoItemDto
+            {
+                Title = "Test Title",
+                Description = "Test Description",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(1),
+            };
+            var result = controller.Post(dto);
+            //Assert.IsType<StatusCodeResult>(result);
+            Assert.Equal(201, ((StatusCodeResult)result).StatusCode);
         }
     }
 }

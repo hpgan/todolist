@@ -16,7 +16,10 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => { 
+    options.SwaggerDoc("v1", new() { Title = "ToDoList API", Version = "v1" });
+    options.EnableAnnotations();
+});
 
 var app = builder.Build();
 

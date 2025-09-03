@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using todolist.Server.Dto;
 using todolist.Server.Models;
 
@@ -8,6 +9,7 @@ namespace todolist.Server.Controllers
     [ApiController]
     [Route("[controller]")]
     [EnableCors("AllowAllOrigins")]
+    
     public class TodoListController : ControllerBase
     {
         private readonly ILogger<TodoListController> _logger;
@@ -38,6 +40,9 @@ namespace todolist.Server.Controllers
 
         [HttpGet]
         [Route("GetAll")]
+        [SwaggerOperation(Summary ="Retrives all Todo list")]
+        [SwaggerResponse(200, "Returns the list of Todo items", typeof(IEnumerable<TodoItem>))]
+        [SwaggerResponse(204, "No content available")]
         public IActionResult Get() {
             var db = new nDbContext();
             db.Database.EnsureCreated();
@@ -47,6 +52,9 @@ namespace todolist.Server.Controllers
         }
         [HttpPost]
         [Route("Create")]
+        [SwaggerOperation(Summary = "Creates a new Todo item.",Description ="Post json data from the request body. Id is auto generate.")]
+        [SwaggerResponse(201, "Todo item created successfully")]
+        [SwaggerResponse(400, "Invalid input data")]
         public IActionResult Post([FromBody] TodoItemDto dto)
         {
             (bool flowControl, IActionResult value) = ValidateDto(dto);
@@ -73,7 +81,13 @@ namespace todolist.Server.Controllers
         
         [HttpGet]
         [Route("GetItem/{id}")]
-        public IActionResult Get(int id)
+        [SwaggerOperation(Summary = "Retrieves a specific Todo item by ID")]
+        [SwaggerResponse(200, "Returns the requested Todo item", typeof(TodoItem))]
+        [SwaggerResponse(404, "Todo item not found")]
+        
+        public IActionResult Get(
+            [SwaggerParameter( Description = "The ID of the Todo item to retrieve", Required = true)]
+            int id)
         {
             var db = new nDbContext();
             db.Database.EnsureCreated();
