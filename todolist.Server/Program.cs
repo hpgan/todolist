@@ -24,15 +24,13 @@ app.UseDefaultFiles();
 app.MapStaticAssets();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseCors("AllowAllOrigins");
     app.UseSwagger();
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
-
-
 
 app.UseHttpsRedirection();
 
