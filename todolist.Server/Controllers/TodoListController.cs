@@ -28,6 +28,10 @@ namespace todolist.Server.Controllers
             {
                 return (flowControl: false, value: BadRequest("The Title field cannot be empty or whitespace."));
             }
+            if (dto.StartDate > dto.EndDate)
+            {
+                return (flowControl: false, value: BadRequest("The StartDate cannot be later than EndDate."));
+            }
 
             return (flowControl: true, value: null);
         }

@@ -10,8 +10,7 @@ namespace Webapi.Test
         {
             var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
             var result = controller.Get();
-            Assert.IsType<NoContentResult>(result); 
-
+            Assert.IsType<OkObjectResult>(result); 
         }
         [Fact]
         public void GetTodoListById_ShouldReturnNotFound()
@@ -28,6 +27,34 @@ namespace Webapi.Test
             {
                 Description = "Test Description",
                 StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(1),
+            };
+            var result = controller.Post(dto);
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+        [Fact]
+        public void CreateTodoList_ShouldReturnBadRequest_WhenTitleIsWhitespace()
+        {
+            var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
+            var dto = new todolist.Server.Dto.TodoItemDto
+            {
+                Title = "   ",
+                Description = "Test Description",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(1),
+            };
+            var result = controller.Post(dto);
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+        [Fact]
+        public void CreateTodoList_ShouldReturnBadRequest_WhenStartDateIsAfterEndDate()
+        {
+            var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
+            var dto = new todolist.Server.Dto.TodoItemDto
+            {
+                Title = "Test Title",
+                Description = "Test Description",
+                StartDate = DateTime.Now.AddDays(2),
                 EndDate = DateTime.Now.AddDays(1),
             };
             var result = controller.Post(dto);
