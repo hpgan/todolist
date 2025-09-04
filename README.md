@@ -13,8 +13,8 @@ This is a technical assessment requested by TG Malaysia.
 
 -  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.
        [Presentation layer](todolist.client)  
-       [Application layer](todolist.Server/Controllers)
-       [Infrastructure layer](todolist.Server/Models)
+       [Application layer](todolist.Server/Controllers)  
+       [Infrastructure layer](todolist.Server/Models)  
 
 -  [x] Data Storage: Use a lightweight database (SQLite or in-memory) for storing to-do items.  
        [Auto create local sqlite database](todolist.Server/ToDoList.db)
