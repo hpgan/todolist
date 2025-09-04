@@ -98,6 +98,11 @@ namespace todolist.Server.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [SwaggerOperation(Summary = "Updates an existing Todo item by ID")]
+        [SwaggerResponse(200, "Todo item updated successfully")]
+        [SwaggerResponse(400, "Invalid input data")]
+        [SwaggerResponse(404, "Todo item not found")]
+        [SwaggerResponse(500, "Internal server error")]
         public IActionResult Post(int id, [FromBody] TodoItemDto dto)
         {
             (bool flowControl, IActionResult value) = ValidateDto(dto);
@@ -119,6 +124,10 @@ namespace todolist.Server.Controllers
 
         [HttpDelete]
         [Route("Delete/{id}")]
+        [SwaggerOperation(Summary = "Deletes a specific Todo item by ID")]
+        [SwaggerResponse(200, "Todo item deleted successfully")]
+        [SwaggerResponse(404, "Todo item not found")]
+        [SwaggerResponse(500, "Internal server error")]
         public IActionResult Delete(int id)
         {
             var db = new nDbContext();
