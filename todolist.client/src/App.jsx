@@ -1,4 +1,10 @@
 import { useEffect, useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import './App.css';
 function App() {
     const [forecasts, setForecasts] = useState();
@@ -9,7 +15,7 @@ function App() {
 
     const contents = forecasts === undefined
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
+        : <table striped bordered hover>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -47,7 +53,8 @@ function App() {
     }
 }
 function AppNew() {
-    const [TodoList, setTodoList] = useState();
+    const [TodoList, setTodoList] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         populateTodoData();
@@ -55,7 +62,7 @@ function AppNew() {
 
     const contents = TodoList === undefined
         ? <p><em>Loading...</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
+        : <Table striped bordered hover>
             <thead>
                 <tr>
                     <th>Id</th>
@@ -72,32 +79,53 @@ function AppNew() {
                     </tr>
                 )}
             </tbody>
-        </table>;
+        </Table>;
 
     return (
-        <div>
-            <h1 id="tableLabel">ToDo List</h1>
-            <p>This component demonstrates fetching ToDo data from the server.</p>
-            {contents}
-        </div>
+        <Stack gap={3}>
+            <div className="p-2">
+                <h1 id="tableLabel">ToDo List</h1>
+            </div>
+
+            <div className="p-2">
+                <p>List of all the ToDos.</p>
+            </div>
+            <div className="p-2">
+                <Button variant="primary" onClick={populateTodoData} disabled={isLoading}>
+                    {isLoading ? 'Refreshing...' : 'Refresh'}
+                </Button>
+            </div>
+            <div className="p-2">
+                {contents}
+            </div>
+        </Stack>
+
     );
 
     async function populateTodoData() {
-        const response = await fetch('https://localhost:7108/TodoList/GetAll', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+        setLoading(true);
+        try {
+            const response = await fetch('http://localhost:81/TodoList/GetAll', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setTodoList(data);
             }
-        });
-        if (response.ok) {
-            const data = await response.json();
-            setTodoList(data);
+
+        } catch (error) {
+            console.error('Error fetching ToDo data:', error);
+        }
+        finally {
+            setLoading(false);
         }
     }
 
 }
-
 
 
 export default AppNew;
