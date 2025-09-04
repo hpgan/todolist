@@ -5,17 +5,17 @@ This is a technical assessment requested by TG Malaysia.
 
 ## Web API (Backend):
 
--  [x]Endpoints: Implement a RESTful API with endpoints for managing a To-do List (Create, Read, Update, Delete).
+-  [x] Endpoints: Implement a RESTful API with endpoints for managing a To-do List (Create, Read, Update, Delete).
 
--  [x]Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.
+-  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.
 
--  [x]Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.
+-  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.
 
--  [x]Data Storage: Use a lightweight database (SQLite or in-memory) for storing to-do items.
+-  [x] Data Storage: Use a lightweight database (SQLite or in-memory) for storing to-do items.
 
--  [x]Validation: Ensure input validation (e.g., to-do item content cannot be empty).
+-  [x] Validation: Ensure input validation (e.g., to-do item content cannot be empty).
 
--  [x]Unit Tests: Cover core business logic with unit tests.
+-  [x] Unit Tests: Cover core business logic with unit tests.
 
 ## Frontend (Good to have): React UI: If implemented, create a basic React frontend to:
 
