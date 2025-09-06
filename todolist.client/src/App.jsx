@@ -85,6 +85,9 @@ function AppNew() {
         <Stack gap={3}>
             <div className="p-2">
                 <h1 id="tableLabel">ToDo List</h1>
+                <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small><br/>
+                <small>The API is: {import.meta.env.VITE_API_URL}</small>
+
             </div>
 
             <div className="p-2">
@@ -105,7 +108,9 @@ function AppNew() {
     async function populateTodoData() {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:81/TodoList/GetAll', {
+            var url = import.meta.env.VITE_API_URL + '/TodoList/GetAll';
+            
+            const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
