@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "node-releases": "^2.0.20",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
     "react-datepicker": "^8.7.0",

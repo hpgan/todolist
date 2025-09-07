@@ -6,8 +6,9 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import './App.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
         : <div>
             {error && (
                 <Alert variant="danger" onClose={() => populateTodoData()} dismissible>
-                    <Alert.Heading>Error fetching data</Alert.Heading>
+                    <p>Error fetching data</p>
                     <p>{error}</p>
                 </Alert>
             )}
@@ -114,13 +115,13 @@ function App() {
                             <td>
                                 {
                                     editingRow === item.id ? (
-                                        <Form.Group controlId='startDate'>
+                                     
                                             <DatePicker
                                                 selected={new Date(editedData.startDate)}
                                                 onChange={handleStartDateChange}
                                                 dateFormat="dd MMM yyyy"
                                             />
-                                        </Form.Group>
+                                      
                                     ) : (formatDate(item.startDate)
                                     )
                                 }
@@ -142,17 +143,17 @@ function App() {
                             <td>
                                 {editingRow === item.id ? (
                                     <>
-                                        <Button variant="success" size="sm" className="me-2" onClick={() => handleSave(item.id)}>Save</Button>
-                                        <Button variant="secondary" size="sm" onClick={handleCancel}>Cancel</Button>
+                                        <Button variant="dark" size="sm" className="me-2" onClick={() => handleSave(item.id)}>Save</Button>
+                                        <Button variant="dark" size="sm" onClick={handleCancel}>Cancel</Button>
                                     </>
                                 ) : (
-                                    <Button variant="primary" size="sm" className="me-2" onClick={() => handleEdit(item.id)}>Edit</Button>
+                                    <Button variant="dark" size="sm" className="me-2" onClick={() => handleEdit(item.id)}>Edit</Button>
                                 )
                                 }
 
                             </td>
                             <td>
-                                <Button variant="primary" size="sm" className="me-2" onClick={() => DeleteTodo(item.id)}>delete</Button>
+                                <Button variant="dark" size="sm" className="me-2" onClick={() => DeleteTodo(item.id)}>delete</Button>
                             </td>
                         </tr>
                     )}
@@ -167,19 +168,20 @@ function App() {
                 <small>Developed by Marcus Gan (2025 Sept)</small><br />
                 <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small><br/>
                 <small>The API is: {import.meta.env.VITE_API_URL}</small>
-
             </div>
 
             <div className="p-2">
                 <p>List of all the ToDos.</p>
             </div>
-            <div className="p-2">
-                <Button variant="primary" onClick={populateTodoData} disabled={isLoading}>
-                    {isLoading ? 'Refreshing...' : 'Refresh'}
-                </Button>
-                <Button variant="primary" onClick={CreateTodo} >
-                    Create
-                </Button>
+            <div>
+                <ButtonGroup>
+                    <Button variant="dark" onClick={populateTodoData} disabled={isLoading}>
+                        {isLoading ? 'Refreshing...' : 'Refresh'}
+                    </Button>
+                    <Button variant="dark" onClick={CreateTodo} >
+                        Create
+                    </Button>
+                </ButtonGroup>
             </div>
             <div className="p-2">
                 {contents}
