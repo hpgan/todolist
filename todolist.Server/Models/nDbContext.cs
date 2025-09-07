@@ -15,7 +15,7 @@ namespace todolist.Server.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlite(@"Data Source=App_Data\ToDoList.db");
+                optionsBuilder.UseSqlite(@"Data Source=ToDoList.db");
 
             }
         }
