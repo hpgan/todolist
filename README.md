@@ -5,6 +5,8 @@ This is a technical assessment requested by TG Malaysia.
 
 ## Web API (Backend):
 
+[Web API Swagger](https://todolistserver20250904095944-cfa0f5bmamf6c9gh.southeastasia-01.azurewebsites.net/swagger)
+
 -  [x] Endpoints: Implement a RESTful API with endpoints for managing a To-do List (Create, Read, Update, Delete).  
        [TodoListController](todolist.Server/Controllers/TodoListController.cs)
        
