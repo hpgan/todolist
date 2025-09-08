@@ -22,9 +22,11 @@ This is a technical assessment requested by TG Malaysia.
 -  [x] Data Storage: Use a lightweight database (SQLite or in-memory) for storing to-do items.  
        [Auto create local sqlite database](todolist.Server/ToDoList.db)
 
--  [x] Validation: Ensure input validation (e.g., to-do item content cannot be empty).
+-  [x] Validation: Ensure input validation (e.g., to-do item content cannot be empty).  
+       [Method: ValidateDto](todolist.Server/Controllers/TodoListController.cs#L23)  
 
--  [x] Unit Tests: Cover core business logic with unit tests.
+-  [x] Unit Tests: Cover core business logic with unit tests.  
+       [Webapi.Test](Webapi.Test)  
 
 ## Frontend (Good to have): React UI: If implemented, create a basic React frontend to:
 
