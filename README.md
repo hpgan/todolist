@@ -3,6 +3,8 @@ Objective: Build a To-do List Web API with .NET, using clean architecture princi
 
 This is a technical assessment requested by TG Malaysia.
 
+![Web Application](animate-client.gif)
+
 ## Web API (Backend):
 
 
