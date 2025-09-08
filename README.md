@@ -12,7 +12,7 @@ This is a technical assessment requested by TG Malaysia.
 
 -  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.
 
--  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.
+-  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.  
        [Presentation layer](todolist.client)  
        [Application layer](todolist.Server/Controllers)  
        [Infrastructure layer](todolist.Server/Models)  
@@ -26,10 +26,10 @@ This is a technical assessment requested by TG Malaysia.
 
 ## Frontend (Good to have): React UI: If implemented, create a basic React frontend to:
 
--  Display a list of to-dos.
+-  [x] Display a list of to-dos.
 
--  Add, update, and delete to-dos items.
+-  [x] Add, update, and delete to-dos items.
 
--  API Integration: Ensure the frontend interacts with the backend API using HTTP requests.
+-  [x] API Integration: Ensure the frontend interacts with the backend API using HTTP requests.
 
--  User Experience: Create a simple and functional UI design for the user to manage to-dos.
+-  [x] User Experience: Create a simple and functional UI design for the user to manage to-dos.
