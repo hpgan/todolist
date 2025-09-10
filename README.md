@@ -3,9 +3,10 @@ Objective: Build a To-do List Web API with .NET, using clean architecture princi
 
 This is a technical assessment requested by TG Malaysia.
 
+![Web Application](animate-client.gif)
+
 ## Web API (Backend):
 
-[Web API Swagger](https://todolistserver20250904095944-cfa0f5bmamf6c9gh.southeastasia-01.azurewebsites.net/swagger)
 
 -  [x] Endpoints: Implement a RESTful API with endpoints for managing a To-do List (Create, Read, Update, Delete).  
        [TodoListController](todolist.Server/Controllers/TodoListController.cs)
@@ -13,7 +14,7 @@ This is a technical assessment requested by TG Malaysia.
 
 -  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.
 
--  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.
+-  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.  
        [Presentation layer](todolist.client)  
        [Application layer](todolist.Server/Controllers)  
        [Infrastructure layer](todolist.Server/Models)  
@@ -21,16 +22,18 @@ This is a technical assessment requested by TG Malaysia.
 -  [x] Data Storage: Use a lightweight database (SQLite or in-memory) for storing to-do items.  
        [Auto create local sqlite database](todolist.Server/ToDoList.db)
 
--  [x] Validation: Ensure input validation (e.g., to-do item content cannot be empty).
+-  [x] Validation: Ensure input validation (e.g., to-do item content cannot be empty).  
+       [Method: ValidateDto](todolist.Server/Controllers/TodoListController.cs#L23)  
 
--  [x] Unit Tests: Cover core business logic with unit tests.
+-  [x] Unit Tests: Cover core business logic with unit tests.  
+       [Webapi.Test](Webapi.Test)  
 
 ## Frontend (Good to have): React UI: If implemented, create a basic React frontend to:
 
--  Display a list of to-dos.
+-  [x] Display a list of to-dos.
 
--  Add, update, and delete to-dos items.
+-  [x] Add, update, and delete to-dos items.
 
--  API Integration: Ensure the frontend interacts with the backend API using HTTP requests.
+-  [x] API Integration: Ensure the frontend interacts with the backend API using HTTP requests.
 
--  User Experience: Create a simple and functional UI design for the user to manage to-dos.
+-  [x] User Experience: Create a simple and functional UI design for the user to manage to-dos.
