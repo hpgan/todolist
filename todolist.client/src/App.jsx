@@ -209,8 +209,8 @@ function App() {
             }
             if (response.status == 204) {
                 setTodoList([]);
-                var responseTxt = await response.text();
-                setError('Error on retrive Todo. ' + responseTxt);
+                //var responseTxt = await response.text();
+                //setError('Error on retrive Todo. ' + responseTxt);
             }
 
         } catch (error) {
