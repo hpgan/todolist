@@ -12,7 +12,8 @@ This is a technical assessment requested by TG Malaysia.
        [TodoListController](todolist.Server/Controllers/TodoListController.cs)
        
 
--  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.
+-  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.  
+       [Deployed webapi to azure service](https://todolistserver20250904095944-cfa0f5bmamf6c9gh.southeastasia-01.azurewebsites.net/swagger/index.html)  
 
 -  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.  
        [Presentation layer](todolist.client)  
