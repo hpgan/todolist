@@ -10,11 +10,12 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import './App.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
 function App() {
     const [TodoList, setTodoList] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [alert, setAlert] = useState({alerttype: '', message: ''});
+    
 
     const [editingRow, SetEditingRow] = useState(null);
     const [editedData, setEditedData] = useState({});
@@ -56,8 +57,6 @@ function App() {
         SetEditingRow(null);
     };
 
-
-
     useEffect(() => {
         populateTodoData();
     }, []);
@@ -71,6 +70,9 @@ function App() {
                     <p>{error}</p>
                 </Alert>
             )}
+            {
+                alert && alert.message !== '' && <ShowAlert></ShowAlert>
+            }
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -176,6 +178,7 @@ function App() {
             <div>
                 <ButtonGroup>
                     <Button variant="dark" onClick={populateTodoData} disabled={isLoading}>
+                        <Spinner animation="grow" size="sm" hidden={!isLoading} className="me-2" />
                         {isLoading ? 'Refreshing...' : 'Refresh'}
                     </Button>
                     <Button variant="dark" onClick={CreateTodo} >
@@ -190,9 +193,20 @@ function App() {
 
     );
 
+    function ShowAlert()
+    {
+        return (
+            <Alert variant={alert.alerttype} onClose={() => populateTodoData()} dismissible>
+                <p>Error fetching data</p>
+                <p>{alert.message}</p>
+            </Alert>
+        );
+    }
+
     async function populateTodoData() {
         setLoading(true);
         setError(null);
+        setAlert({ alerttype: '', message: '' });
         try {
             var url = import.meta.env.VITE_API_URL + '/TodoList/GetAll';
             
@@ -215,7 +229,7 @@ function App() {
 
         } catch (error) {
             console.error('Error fetching ToDo data:', error);
-            setError(error.message);
+            setAlert({ alerttype: 'danger', message: error.message });
         }
         finally {
             setLoading(false);
@@ -245,11 +259,11 @@ function App() {
             }
             if (response.status == 400) {
                 var responseTxt = await response.text();
-                setError('Error creating ToDo.' + responseTxt);
+                setAlert({ alerttype: 'danger', message: 'Error creating ToDo. ' + responseTxt });
             }
         } catch (error) {
             console.error('Error creating ToDo:', error);
-            setError(error.message);
+            setAlert({ alerttype: 'danger', message: error.message });
         }
         finally {
             setLoading(false);
@@ -272,16 +286,16 @@ function App() {
             }
             if (response.status == 400) {
                 var responseTxt = await response.text();
-                setError('Error deleting ToDo.' + responseTxt);
+                setAlert({ alerttype: 'danger', message: 'Error deleting ToDo. ' + responseTxt });
             }
             if (response.status == 404) {
                 var responseTxt = await response.text();
-                setError('Error deleting ToDo.' + responseTxt);
+                setAlert({ alerttype: 'danger', message: 'Error deleting ToDo. ' + responseTxt });
 
             }
         } catch (error) {
             console.error('Error deleting ToDo:', error);
-            setError(error.message);
+            setAlert({ alerttype: 'danger', message: error.message });            
         }
         finally {
             setLoading(false);
@@ -305,13 +319,12 @@ function App() {
             }
             if (response.status == 400) {
                 var responseTxt = await response.text();
-                setError('Error updating ToDo.' + responseTxt);
-             
+                setAlert({ alerttype: 'danger', message: 'Error updating ToDo. ' + responseTxt });
             }
 
         } catch (error) {
             console.error('Error updating ToDo:', error);
-            setError(error.message);
+            setAlert({ alerttype: 'danger', message: error.message });
         }
         finally {
             setLoading(false);
@@ -322,6 +335,5 @@ function App() {
         return new Date(dateString).toLocaleDateString(undefined, options);
     }
 }
-
 
 export default App;

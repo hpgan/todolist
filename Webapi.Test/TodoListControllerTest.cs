@@ -16,7 +16,7 @@ namespace Webapi.Test
         public void GetTodoListById_ShouldReturnNotFound()
         {
             var controller = new TodoListController(new LoggerFactory().CreateLogger<TodoListController>());
-            var result = controller.Get(2);
+            var result = controller.Get(1000);
             Assert.IsType<NotFoundResult>(result);
         }
         [Fact]
