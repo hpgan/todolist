@@ -1,7 +1,11 @@
 # ToDoList
 Objective: Build a To-do List Web API with .NET, using clean architecture principles. If possible, add a basic React frontend to interact with the API.
 
-This is a technical assessment requested by TG Malaysia.
+This is a technical assessment requested by TG Malaysia.  
+
+[Backend WebAPI - Azure service](https://todolistapi-gmh5fmgmeuadb4c8.malaysiawest-01.azurewebsites.net/swagger/index.html)  
+[Frontend WebApp - Azure service](https://todoclient-e8exdbevh2brc0gt.malaysiawest-01.azurewebsites.net)  
+
 
 ![Web Application](animate-client.gif)
 
@@ -13,7 +17,7 @@ This is a technical assessment requested by TG Malaysia.
        
 
 -  [x] Swagger: Add Swagger (OpenAPI) documentation to the API to provide an interactive interface and detailed documentation of each endpoint.  
-       [Deployed webapi to azure service](https://todolistserver20250904095944-cfa0f5bmamf6c9gh.southeastasia-01.azurewebsites.net/swagger/index.html)  
+       [Deployed webapi to azure service](https://todolistapi-gmh5fmgmeuadb4c8.malaysiawest-01.azurewebsites.net/swagger/index.html)  
 
 -  [x] Clean Architecture: Structure the solution with layers such as Core, Application, Infrastructure, and API to maintain separation of concerns.  
        [Presentation layer](todolist.client)  
