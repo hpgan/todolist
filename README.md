@@ -1,8 +1,6 @@
 # ToDoList
 Objective: Build a To-do List Web API with .NET, using clean architecture principles. If possible, add a basic React frontend to interact with the API.
 
-This is a technical assessment requested by TG Malaysia.  
-
 [Backend WebAPI - Azure service](https://todolistapi-gmh5fmgmeuadb4c8.malaysiawest-01.azurewebsites.net/swagger/index.html)  
 [Frontend WebApp - Azure service](https://todoclient-e8exdbevh2brc0gt.malaysiawest-01.azurewebsites.net)  
 
